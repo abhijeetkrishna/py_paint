@@ -1,0 +1,6 @@
+-e .
+numpy==1.19.5
+pandas>=1.2.0
+matplotlib~=3.4.0
+pytest
+tk
