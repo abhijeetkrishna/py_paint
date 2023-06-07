@@ -4,6 +4,7 @@ def record_position(event):
     x = event.x
     y = event.y
     positions.append((x, y))
+    update_canvas()
 
 def start_drawing(event):
     global positions
@@ -12,9 +13,13 @@ def start_drawing(event):
 
 def stop_drawing(event):
     canvas.unbind('<B1-Motion>')
-    print("Recorded positions:")
-    for pos in positions:
-        print(pos)
+
+def update_canvas():
+    canvas.delete('curve')
+    for i in range(len(positions) - 1):
+        x1, y1 = positions[i]
+        x2, y2 = positions[i + 1]
+        canvas.create_line(x1, y1, x2, y2, tags='curve')
 
 def create_gui():
     global canvas
